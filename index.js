@@ -1,18 +1,22 @@
-// function add (a,b){
-// return a + b ;
-//}
+const display = document.querySelector('#display');
+const btn = document.querySelectorAll('button');
+// const clear = document.querySelector();
 
-// function subtract (a,b){
-// return a - b ;
-//}
+function add (a,b){
+return a + b ;
+}
 
-// function multiply (a,b){
-// return a * b ;
-//}
+function subtract (a,b){
+return a - b ;
+}
 
-// function divide (a,b){
-// return a / b ;
-//}
+function multiply (a,b){
+return a * b ;
+}
+
+function divide (a,b){
+return a / b ;
+}
 
 // function appendToDisplay(input){
 // display.value += input // shows the calc on the screen
