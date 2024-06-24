@@ -1,6 +1,7 @@
 const display = document.querySelector('#display');
 const btn = document.querySelectorAll('button');
-// const clear = document.querySelector();
+const clear = document.querySelector('.clear');
+const eval = document.querySelector('.eval');
 
 function add (a,b){
 return a + b ;
@@ -18,24 +19,6 @@ function divide (a,b){
 return a / b ;
 }
 
-// function appendToDisplay(input){
-// display.value += input // shows the calc on the screen
-// input being the operator and numbers
-//}
-
-// function clearDisplay (){
-// display.value += ' ';
-//}
-
-// function calculate (){
-// display.value += operate();
-//}
-
-// element.addEventListener('click', ) => input
-// element.addEventListener('click', ) => clear
-// element.addEventListener('click', ) => decimal point (includes)
-//stopPropagation();
-
 // let firstNumber;
 // let operators;
 // let secondNumber;
@@ -49,3 +32,23 @@ return a / b ;
 // if (operators == '*') return function multiply(firstNumber, secondNumber);
 // if (operators == '/') return function divide(firstNumber, secondNumber);
 //}
+
+// let value = display.value;
+// function appendToDisplay(input){
+// value += input // shows the calc on the screen
+// input being the operator and numbers
+//}
+
+// function clearDisplay (){
+// value += ' ';
+//}
+
+// function calculate (){
+// value += operate();
+//}
+
+// element.addEventListener('click', ) => input
+// element.addEventListener('click', ) => clear
+// element.addEventListener('click', ) => decimal point (includes)
+//stopPropagation();
+

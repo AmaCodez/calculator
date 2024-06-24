@@ -47,6 +47,10 @@ button {
     background-color: rgb(250, 162, 0);
 }
 
+.eval {
+    background-color: rgb(250, 162, 0);
+}
+
 button.operator:hover {
     background-color:rgb(100, 95, 95) ;
 }
@@ -55,11 +59,28 @@ button.operator:active {
     background-color: rgb(159, 153, 153);
 }
 
+button.clear:hover {
+    background-color:rgb(100, 95, 95) ;
+}
+
+button.clear:active {
+    background-color: rgb(159, 153, 153);
+}
+
 button.operators:hover {
     background-color:rgb(245, 177, 51) ;
 }
 
 button.operators:active {
+    background-color: white;
+    color: orange;
+}
+
+button.eval:hover {
+    background-color:rgb(245, 177, 51) ;
+}
+
+button.eval:active {
     background-color: white;
     color: orange;
 }
