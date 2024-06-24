@@ -29,27 +29,21 @@ let operators;
 let secondNumber;
 
 function operate (operator, num1, num2){
- firstNumber = num1;
-operators = operator;
-secondNumber = num2;
-if (operators == '+') {
-    return add(firstNumber, secondNumber)
-} else if (operators == '-') {
-    return subtract(firstNumber, secondNumber)
-} else if (operators == '*') {
-    return multiply(firstNumber, secondNumber)
-} else if (operators == '/') {
-    return divide(firstNumber, secondNumber)
+if (operator == '+') {
+    return add(num1, num2)
+} else if (operator == '-') {
+    return subtract(num1, num2)
+} else if (operator == '*') {
+    return multiply(num1, num2)
+} else if (operator == '/') {
+    return divide(num1, num2)
 }
+return 'Error';
 };
 
 function appendToDisplay(event){
 const input = event.target.textContent;  // shows the calc on the screen input being the operator and numbers
 display.value += input;
-}
-
-function calculate (){
-display.value = operate();
 }
 
 btn.forEach((key) => {
@@ -59,7 +53,10 @@ btn.forEach((key) => {
 clearBtn.addEventListener('click', () => {
     display.value = '';
 }); 
-// element.addEventListener('click', ) => eval
+
+equalBtn.addEventListener('click', () => {
+    display.value = operate();
+} )
 // element.addEventListener('click', ) => decimal point (includes)
 //stopPropagation();
 
