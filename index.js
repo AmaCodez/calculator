@@ -3,6 +3,7 @@ const operatorBtn = document.querySelectorAll('.operator');
 const numberBtn = document.querySelectorAll('.number');
 const clearBtn = document.querySelector('.clear');
 const equalBtn = document.querySelector('.eval');
+const decimalBtn = document.querySelector('.decimal');
 
 function add (a,b){
 return a + b ;
@@ -28,6 +29,7 @@ function divide (a,b){
 let firstNumber = '';
 let operator = '';
 let secondNumber = '';
+let shouldRestDisplay = false;
 
 function operate (operator, num1, num2){
     num1 = parseFloat(num1);
@@ -45,7 +47,12 @@ return 'Error';
 };
 
 function appendNumber(event){
-const input = event.target.textContent;  // shows the calc on the screen input being the operator and numbers
+const input = event.target.textContent; 
+if (shouldRestDisplay) {
+    display.value = '';
+    shouldRestDisplay = false;
+}
+if (input == '.' && display.value.includes('.')) return;
 display.value += input;
 if (operator == ''){
     firstNumber += input;
@@ -57,12 +64,13 @@ if (operator == ''){
 function setOperator(event){
     if (firstNumber == '') return;
     if(operator !== '' && secondNumber !== '') {
-       firstNumber = operate (operator, firstNumber, secondNumber);
+       firstNumber = operate (operator, firstNumber, secondNumber).toString();
         display.value = firstNumber;
         secondNumber = '';
     }
     operator = event.target.getAttribute('data-operator');
-    display.value += operator;
+    // display.value += operator;
+    shouldRestDisplay = true;
 }
 
 
@@ -74,8 +82,11 @@ operatorBtn.forEach(button => {
     button.addEventListener('click', setOperator);
 });
 
+decimalBtn.addEventListener('click', appendNumber);
+
 clearBtn.addEventListener('click', () => {
     display.value = '';
+    shouldRestDisplay = false;
 }); 
 
 equalBtn.addEventListener('click', () => {
@@ -84,10 +95,12 @@ equalBtn.addEventListener('click', () => {
         firstNumber = display.value;
         operator = '';
         secondNumber = '';
+        shouldRestDisplay = true;
     } else {
         display.value = 'Error';
     }
 });
-// element.addEventListener('click', ) => decimal point (includes)
-//stopPropagation();
+
+ 
+
 
