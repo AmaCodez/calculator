@@ -1,5 +1,6 @@
 const display = document.querySelector('#display');
-const btn = document.querySelectorAll('.operator');
+const operatorBtn = document.querySelectorAll('.operator');
+const numberBtn = document.querySelectorAll('.number');
 const clearBtn = document.querySelector('.clear');
 const equalBtn = document.querySelector('.eval');
 
@@ -24,12 +25,14 @@ function divide (a,b){
 
 }
 
-let firstNumber;
-let operators;
-let secondNumber;
+let firstNumber = '';
+let operator = '';
+let secondNumber = '';
 
 function operate (operator, num1, num2){
-if (operator == '+') {
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
+    if (operator == '+') {
     return add(num1, num2)
 } else if (operator == '-') {
     return subtract(num1, num2)
@@ -41,13 +44,34 @@ if (operator == '+') {
 return 'Error';
 };
 
-function appendToDisplay(event){
+function appendNumber(event){
 const input = event.target.textContent;  // shows the calc on the screen input being the operator and numbers
 display.value += input;
+if (operator == ''){
+    firstNumber += input;
+} else {
+    secondNumber += input;
+}
 }
 
-btn.forEach((key) => {
-    key.addEventListener('click', appendToDisplay);
+function setOperator(event){
+    if (firstNumber == '') return;
+    if(operator !== '' && secondNumber !== '') {
+       firstNumber = operate (operator, firstNumber, secondNumber);
+        display.value = firstNumber;
+        secondNumber = '';
+    }
+    operator = event.target.getAttribute('data-operator');
+    display.value += operator;
+}
+
+
+numberBtn.forEach((key) => {
+    key.addEventListener('click', appendNumber);
+});
+
+operatorBtn.forEach(button => {
+    button.addEventListener('click', setOperator);
 });
 
 clearBtn.addEventListener('click', () => {
@@ -55,8 +79,15 @@ clearBtn.addEventListener('click', () => {
 }); 
 
 equalBtn.addEventListener('click', () => {
-    display.value = operate();
-} )
+    if (firstNumber !== '' && operator !== '' && secondNumber !== ''){
+        display.value = operate(operator, firstNumber, secondNumber);
+        firstNumber = display.value;
+        operator = '';
+        secondNumber = '';
+    } else {
+        display.value = 'Error';
+    }
+});
 // element.addEventListener('click', ) => decimal point (includes)
 //stopPropagation();
 

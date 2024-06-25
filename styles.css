@@ -43,7 +43,7 @@ button {
     color: white;
 }
 
-.operators {
+.operator {
     background-color: rgb(250, 162, 0);
 }
 
@@ -51,11 +51,11 @@ button {
     background-color: rgb(250, 162, 0);
 }
 
-button.operator:hover {
+button.number:hover {
     background-color:rgb(100, 95, 95) ;
 }
 
-button.operator:active {
+button.number:active {
     background-color: rgb(159, 153, 153);
 }
 
@@ -67,11 +67,11 @@ button.clear:active {
     background-color: rgb(159, 153, 153);
 }
 
-button.operators:hover {
+button.operator:hover {
     background-color:rgb(245, 177, 51) ;
 }
 
-button.operators:active {
+button.operator:active {
     background-color: white;
     color: orange;
 }
